@@ -40,11 +40,9 @@ class ChatGptViewModel : ViewModel(){
 
     fun callApi(question : String){
         addToChat("Typing....",Message.SENT_BY_BOT,getCurrentTimestamp())
-
+        val text="Please respond only with information related to medical support or tour planning. The user has requested: $question"
         val completionRequest = CompletionRequest(
-            model = "text-davinci-003",
-            prompt = question,
-            max_tokens = 4000
+            prompt = text,
         )
 
         viewModelScope.launch {
@@ -61,7 +59,7 @@ class ChatGptViewModel : ViewModel(){
         withContext(Dispatchers.Main){
             if (response.isSuccessful){
                 response.body()?.let { completionResponse ->
-                    val result = completionResponse.choices.firstOrNull()?.text
+                    val result = completionResponse.response
                     if (result != null){
                         addResponse(result.trim())
                     }else{

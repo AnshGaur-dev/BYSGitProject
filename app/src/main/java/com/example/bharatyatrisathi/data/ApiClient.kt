@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
 
-    private const val BASE_URL = "https://api.openai.com/"
+    private const val BASE_URL = "http://52.172.43.95:5005/"
 
     private val httpClient = OkHttpClient.Builder()
         .build()

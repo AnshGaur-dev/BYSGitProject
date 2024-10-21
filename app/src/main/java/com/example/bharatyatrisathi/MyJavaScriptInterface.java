@@ -11,7 +11,6 @@ public class MyJavaScriptInterface {
 
     @JavascriptInterface
     public void onGameInteraction(String interactionData) {
-        // Handle the game interaction data here in the Minigames activity
         mActivity.handleGameInteraction(interactionData);
     }
 }

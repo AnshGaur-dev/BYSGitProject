@@ -9,7 +9,6 @@ import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface OpenAiApi {
-    @Headers("Authorization: Bearer $MY_API_KEY")
-    @POST("v1/completions")
+    @POST("generate")
     suspend fun getCompletions(@Body completionResponse: CompletionRequest) : Response<CompletionResponse>
 }
